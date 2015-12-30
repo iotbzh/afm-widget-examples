@@ -1,12 +1,12 @@
 [submodule "annex"]
-	path = webapps-annex
+	path = modules/webapps-annex
 	url = https://github.com/01org/webapps-annex.git
 [submodule "memory-match"]
-	path = webapps-memory-match
+	path = modules/webapps-memory-match
 	url = https://github.com/01org/webapps-memory-match.git
 [submodule "rabbit"]
-	path = webapps-rabbit
+	path = modules/webapps-rabbit
 	url = https://github.com/01org/webapps-rabbit.git
 [submodule "slider-puzzle"]
-	path = webapps-slider-puzzle
+	path = modules/webapps-slider-puzzle
 	url = https://github.com/01org/webapps-slider-puzzle.git

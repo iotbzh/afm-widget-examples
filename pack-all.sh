@@ -19,14 +19,13 @@ wgtdir=$here/wgtdir
 
 apps=$(git submodule status | sed 's: .* \(.*\) (.*:\1:')
 
-cd $here
-for appli in $apps
+for dir in $apps
 do
-	cd $here
 	test -e $wgtdir && rm -rf $wgtdir 2>/dev/null
+	appli=${dir##*/}
 	wgt=${appli#webapps-}.wgt
-	echo "packaging $appli to $wgt"
-	cp -r $here/$appli $wgtdir
+	echo "packaging $dir to $wgt"
+	cp -r $here/$dir $wgtdir
 	data="$(./JSON.sh -b < $wgtdir/package.json |
 		egrep "^[[]\"($pat)\"]" |
 		sed 's:^[[]"\([^"]*\)"]:\1:')"
@@ -40,8 +39,11 @@ do
 	done
 	eval "$args; echo \"${config//\"/\\\"}\"" > $wgtdir/app/config.xml
 	cp $wgtdir/icon_128.png $wgtdir/app
-	zip -q -r $wgt $wgtdir/app
+	cd $wgtdir/app
+	zip -q -r $here/$wgt .
+	cd $here
 	test -e $wgtdir && rm -rf $wgtdir 2>/dev/null
 done
 
-
+test -e $wgtdir && rm -rf $wgtdir 2>/dev/null
+exit 0
