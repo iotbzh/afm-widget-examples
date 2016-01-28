@@ -15,35 +15,35 @@ config='<?xml version="1.0" encoding="UTF-8"?>
 '
 
 here=$(pwd)
-wgtdir=$here/wgtdir
-
 apps=$(git submodule status | sed 's: .* \(.*\) (.*:\1:')
 
 for dir in $apps
 do
-	test -e $wgtdir && rm -rf $wgtdir 2>/dev/null
 	appli=${dir##*/}
 	wgt=${appli#webapps-}.wgt
 	echo "packaging $dir to $wgt"
-	cp -r $here/$dir $wgtdir
-	data="$(./JSON.sh -b < $wgtdir/package.json |
-		egrep "^[[]\"($pat)\"]" |
-		sed 's:^[[]"\([^"]*\)"]:\1:')"
-	args=
-	unset $list
-	for x in $list
-	do
-		y="$(echo "$data"|grep "^$x"|sed "s:$x	::" |
-			sed 's:&:\&amp;:g;s:<:\&lt\;:g;s:>:\&gt\;:g')"
-		args="$args$x=${y} "
-	done
-	eval "$args; echo \"${config//\"/\\\"}\"" > $wgtdir/app/config.xml
-	cp $wgtdir/icon_128.png $wgtdir/app
-	cd $wgtdir/app
-	zip -q -r $here/$wgt .
-	cd $here
-	test -e $wgtdir && rm -rf $wgtdir 2>/dev/null
+	if cd $here/$dir && npm install && bower install && grunt wgt
+	then
+		data="$(${here}/JSON.sh -b < package.json |
+			egrep "^[[]\"($pat)\"]" |
+			sed 's:^[[]"\([^"]*\)"]:\1:')"
+		cd build/wgt
+		args=
+		unset $list
+		for x in $list
+		do
+			y="$(echo "$data"|grep "^$x"|sed "s:$x	::" |
+				sed 's:&:\&amp;:g;s:<:\&lt\;:g;s:>:\&gt\;:g')"
+			args="$args$x=${y} "
+		done
+		echo "$data ; $args; echo \"${config//\"/\\\"}\""
+		eval "$args; echo \"${config//\"/\\\"}\"" | tee config.xml
+		zip -q -r $here/$wgt .
+		echo "Success"
+	else
+		echo "Failed!"
+	fi
+	echo
 done
 
-test -e $wgtdir && rm -rf $wgtdir 2>/dev/null
 exit 0
