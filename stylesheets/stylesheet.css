@@ -155,6 +155,8 @@ a.button span {
 #download-annex span { background: transparent url(../images/annex-icon.png) 11px 50% / 23px 23px no-repeat; }
 #download-rabbit span { background: transparent url(../images/rabbit-icon.png) 11px 50% / 23px 23px no-repeat; }
 #download-memory-match span { background: transparent url(../images/memory-match-icon.png) 11px 50% / 23px 23px no-repeat; }
+#download-smarthome span { background: transparent url(../images/smarthome-icon.png) 11px 50% / 23px 23px no-repeat; }
+
 #download-zip span {
   background: transparent url(../images/zip-icon.png) 12px 50% no-repeat;
 }
