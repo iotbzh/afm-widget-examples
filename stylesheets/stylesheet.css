@@ -156,6 +156,7 @@ a.button span {
 #download-rabbit span { background: transparent url(../images/rabbit-icon.png) 11px 50% / 23px 23px no-repeat; }
 #download-memory-match span { background: transparent url(../images/memory-match-icon.png) 11px 50% / 23px 23px no-repeat; }
 #download-smarthome span { background: transparent url(../images/smarthome-icon.png) 11px 50% / 23px 23px no-repeat; }
+#download-afb-radio span { background: transparent url(../images/afb-radio-icon.png) 11px 50% / 23px 23px no-repeat; }
 
 #download-zip span {
   background: transparent url(../images/zip-icon.png) 12px 50% no-repeat;
