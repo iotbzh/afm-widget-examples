@@ -2,7 +2,7 @@
 
 ## Download the widgets
 
-[Download page](http://iotbzh.github.io/afm-widget-examples)
+[Download page](https://github.com/iotbzh/afm-widget-examples)
 
 or merely here:
 [Annex](https://github.com/iotbzh/afm-widget-examples/raw/master/annex.wgt),
