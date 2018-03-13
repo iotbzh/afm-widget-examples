@@ -11,6 +11,9 @@ config='<?xml version="1.0" encoding="UTF-8"?>
   <description>${description}</description>
   <author>${author}</author>
   <license>${license}</license>
+  <feature name="urn:AGL:widget:required-permission">
+    <param name="urn:AGL:permission::public:no-htdocs" value="required" />
+  </feature>
 </widget>
 '
 
