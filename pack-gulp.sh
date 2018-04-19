@@ -14,6 +14,10 @@ config='<?xml version="1.0" encoding="UTF-8"?>
   <feature name="urn:AGL:widget:required-permission">
     <param name="urn:AGL:permission::public:no-htdocs" value="required" />
   </feature>
+  <feature name="urn:AGL:widget:required-api">
+    <param name="windowmanager" value="ws" />
+    <param name="homescreen" value="ws" />
+  </feature>
 </widget>
 '
 
